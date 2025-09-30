@@ -3,6 +3,8 @@ import emailjs from "@emailjs/browser";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const EMAILJS_ENABLED = false;
+
 const Contact = () => {
   const form = useRef();
   const [isSent, setIsSent] = useState(false);
@@ -10,17 +12,30 @@ const Contact = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    if (!EMAILJS_ENABLED) {
+      toast.info("Contact form is disabled. Please reach out via GitHub or LinkedIn.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        theme: "dark",
+      });
+      return;
+    }
+
     emailjs
       .sendForm(
-        "service_axbtt7a",  // Replace with your EmailJS Service ID
-        "template_1ziboq3",  // Replace with your EmailJS Template ID
+        "service_xxx",
+        "template_xxx",
         form.current,
-        "Rz7W9pVF0HdDryNNL"  // Replace with your EmailJS Public Key
+        "public_xxx"
       )
       .then(
         () => {
           setIsSent(true);
-          form.current.reset(); // Reset form fields after sending
+          form.current.reset();
           toast.success("Message sent successfully! ✅", {
             position: "top-right",
             autoClose: 3000,

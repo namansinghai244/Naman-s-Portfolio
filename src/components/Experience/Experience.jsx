@@ -1,7 +1,17 @@
-import React from "react";
-import { experiences } from "../../constants"; // Import your data
+
+import { useEffect } from "react";
+import {experiences }  from "../../constants.js";
 
 const Experience = () => {
+  useEffect(() => {
+    console.log(experiences);
+  }, []);
+
+
+  if (!experiences || experiences.length === 0) {
+    return <div>No experiences to display</div>;
+  }
+  
   return (
     <section
       id="experience"
@@ -23,7 +33,7 @@ const Experience = () => {
         <div className="absolute sm:left-1/2 left-0 transform -translate-x-1/2 sm:-translate-x-0 w-1 bg-white h-full"></div>
 
         {/* Experience Entries */}
-        {experiences.map((experience, index) => (
+        {experiences?.map((experience, index) => (
           <div
             key={experience.id}
             className={`flex flex-col sm:flex-row items-center mb-16 ${
