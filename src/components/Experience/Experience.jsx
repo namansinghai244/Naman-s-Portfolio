@@ -82,7 +82,7 @@ const Experience = () => {
               </div>
 
               <p className="mt-4 text-gray-400">{experience.desc}</p>
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <h5 className="font-medium text-white">Skills:</h5>
                 <ul className="flex flex-wrap mt-2">
                   {experience.skills.map((skill, index) => (
@@ -94,7 +94,7 @@ const Experience = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}
